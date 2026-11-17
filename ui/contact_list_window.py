@@ -48,13 +48,17 @@ class ContactListWindow(MainWindow):
         return selected_items[0].row()
 
     def __on_input_changed(self) -> None:
-        """Enables or disables the add button based on the input fields."""
+        """Enables or disables the add button based on the input."""
         name = self._name_line_edit.text().strip()
         phone = self._phone_line_edit.text().strip()
-        self._add_button.setEnabled(name_is_valid phone_is_valid)
+        self._add_button.setEnabled(name_is_valid and phone_is_valid)
 
     @Slot()
-
     def __on_add_button_clicked(self) -> None:
 
+    @Slot()
+    def _on_table_selection_changed(self) -> None:
+        self._remove_button.setEnabled(self.__get_selected_row() is not None)
+
+    @Slot()
     def __on_remove_button_clicked(self) -> None:

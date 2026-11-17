@@ -61,10 +61,18 @@ class ContactListWindow(MainWindow):
         Represents a function that enables or disables the add button based 
         on the input.
         """
- 
+        ## What did not work:
+        # name_is_valid = self._name_line_edit.text().strip() != "" 
+        # phone_is_valid = self._phone_line_edit.hasAcceptableInput()
+
+        # self._add_button.setEnabled(name_is_valid and phone_is_valid)
+        
+        #What did work:
         name_is_valid = self._name_line_edit.text().strip() != ""
-        phone_is_valid = self._phone_line_edit.hasAcceptableInput()
- 
+
+        phone_digits = [c for c in self._phone_line_edit.text() if c.isdigit()]
+        phone_is_valid = len(phone_digits) == 10
+
         self._add_button.setEnabled(name_is_valid and phone_is_valid)
  
     @Slot()

@@ -24,4 +24,17 @@ Eric Tarrant
 - I created a message box that can remove contacts with buttons
 
 - How to disable a button when a field is not filled in
-# isd_activity4
+
+# Testing
+
+Initial Launch: The program launches
+
+Name only: The add contact stays disabled
+
+Phone only: The add contact stays disabled
+
+Name and phone with less than 10 characters: Add contact stays disabled
+
+Name and phone with all digits: Add contacts lights up and adds a contact
+
+Adds with enter: It adds with enter.

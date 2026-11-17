@@ -9,7 +9,7 @@ __version__ = "1.0.0"
  
  
 class ContactListWindow(MainWindow):
-    """Represents a window for managing a list of contacts."""
+    """Represents a window for a list of phone contacts."""
  
     def __init__(self) -> None:
         """Initializes the ContactListWindow class."""
@@ -112,8 +112,7 @@ class ContactListWindow(MainWindow):
         message_box.setWindowTitle("Remove Contact")
         message_box.setIcon(QMessageBox.Icon.Question)
         message_box.setText(f"Do you want to remove the contact {name}?")
-        message_box.setStandardButtons(QMessageBox.StandardButton.Yes |
-                                       QMessageBox.StandardButton.No)
+        message_box.setStandardButtons(QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
         message_box.setDefaultButton(QMessageBox.StandardButton.No)
  
         if message_box.exec() == QMessageBox.StandardButton.Yes:

@@ -1,4 +1,5 @@
 """The module defines the ContactListWindow class."""
+from PySide6.QtCore import Slot
 from PySide6.QtWidgets import QMessageBox, QTableWidgetItem
 
 from ui.base.main_window import MainWindow
@@ -31,4 +32,29 @@ class ContactListWindow(MainWindow):
         self._add_button.clicked.connect(self.__on_add_button_clicked)
         self._contact_table.itemSelectionChanged.connect(
             self.__on_table_selection_changed)
-        self._remove_button.clicked.connect(self.__on_remove_button_clicked)
+    
+    self._remove_button.clicked.connect(self.__on_remove_button_clicked)
+
+    @Slot()
+    def __get_select_row(self) -> int:
+        """Returns the index of the selected row in the contact table.
+
+        Returns:
+            int: The index of the selected row, or -1 if no row is selected.
+        """
+        selected_items = self._contact_table.selectedItems()
+        if not selected_items:
+            return -1
+        return selected_items[0].row()
+
+    def __on_input_changed(self) -> None:
+        """Enables or disables the add button based on the input fields."""
+        name = self._name_line_edit.text().strip()
+        phone = self._phone_line_edit.text().strip()
+        self._add_button.setEnabled(name_is_valid phone_is_valid)
+
+    @Slot()
+
+    def __on_add_button_clicked(self) -> None:
+
+    def __on_remove_button_clicked(self) -> None:
